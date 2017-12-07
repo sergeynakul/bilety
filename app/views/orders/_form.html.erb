@@ -1,0 +1,37 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Имя' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label 'Email (на него прийдет стоимость билета)' %><br>
+    <%= f.email_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label 'Станция отправления' %><br>
+    <%= f.text_field :from %>
+  </div>
+  <div class="field">
+    <%= f.label 'Станция назначения' %><br>
+    <%= f.text_field :to %>
+  </div>
+  <div class="field">
+    <%= f.label 'Дата' %><br>
+    <%= f.date_field :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Отправить' %>
+  </div>
+<% end %>
