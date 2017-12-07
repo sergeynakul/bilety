@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_filter :check_if_admin, only: [:index, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -41,9 +42,12 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    @order = Order.new(order_params)
+
     respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Запрос успешно отправлен.' }
+      if @order.save
+        OrderMailer.send_email(@order).deliver        
+        format.html { redirect_to @order, notice: 'Измененный запрос успешно отправлен.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,5 +75,9 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:name, :email, :from, :to, :date)
+    end
+
+    def check_if_admin
+      render text: "Доступ запрещен", status:403 unless params[:admin] 
     end
 end

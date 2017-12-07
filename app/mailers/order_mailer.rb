@@ -4,6 +4,6 @@ class OrderMailer < ActionMailer::Base
   def send_email(order)
   	@order = order
 
-  	mail to: "nakul.sv@gmail.com", subject: 'Запос стоимости билета'
+  	mail to: "sergey12vn@gmail.com", subject: 'Запос стоимости билета'
   end
 end

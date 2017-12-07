@@ -1,4 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+Спасибо за Ваш запрос, <%= @order.name %>!<br>
+
+А именно,<br>
+Станция отправления - <%= @order.from %><br>
+Станция назначения - <%= @order.to %><br>
+Дата - <%= @order.date %><br>
+
+Вам на email - <%= @order.email %> - прийдет стоимость билета.<br>
+
+Если Вам нужно изменить какие-то данные, нажмите - 
+<%= link_to 'Редактировать запрос', edit_order_path(@order) %>
