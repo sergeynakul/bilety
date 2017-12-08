@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_filter :check_if_admin, only: [:index, :destroy]
+  before_filter :check_if_admin, only: [:index]
 
   # GET /orders
   # GET /orders.json
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url }
+      format.html { redirect_to '/orders?admin=1' }
       format.json { head :no_content }
     end
   end
