@@ -3,26 +3,23 @@ require 'test_helper'
 class OrdersControllerTest < ActionController::TestCase
   setup do
     @order = orders(:one)
+    @base_title = "ЖД билеты на украинские поезда"
   end
 
   test "should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:orders)
+    assert_select "title", "#{@base_title} | Все запросы"
   end
 
   test "should get new" do
     get :new
     assert_response :success
+    assert_select "title", "#{@base_title} | Запрос цены"
   end
 
-  test "should create order" do
-    assert_difference('Order.count') do
-      post :create, order: {  }
-    end
-
-    assert_redirected_to order_path(assigns(:order))
-  end
+ 
 
   test "should show order" do
     get :show, id: @order
@@ -34,10 +31,7 @@ class OrdersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update order" do
-    patch :update, id: @order, order: {  }
-    assert_redirected_to order_path(assigns(:order))
-  end
+
 
   test "should destroy order" do
     assert_difference('Order.count', -1) do

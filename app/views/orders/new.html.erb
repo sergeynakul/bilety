@@ -1,3 +1,20 @@
-<h1>Запросить стоимость билета</h1>
+<% provide(:title, "Запрос цены") %>
 
+<header>
+<h1>Запросить стоимость билета</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><%= link_to "Регистрация", singup_path %></li>
+    <li><%= link_to "Вход", '#' %></li>
+  </ul>
+</nav>
+
+<section>
 <%= render 'form' %>
+</section>
+
+<footer>
+<p>По всем вопросам обращаться на sergey12vn@gmail.com или по телефону +38 (000) 000-00-00</p>
+</footer>

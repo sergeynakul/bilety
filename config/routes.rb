@@ -7,6 +7,8 @@ Bilety::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'orders#new'
 
+  get 'singup' => 'users#new'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

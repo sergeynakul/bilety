@@ -16,3 +16,5 @@ th, td {
     padding: 3px; /* Поля вокруг содержимого таблицы */
     border: 1px solid black; /* Параметры рамки */
    }
+
+li {list-style-type: none;}
