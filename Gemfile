@@ -6,6 +6,8 @@ gem 'rails', '4.0.0'
 gem 'sqlite3'
 gem 'bcrypt',      '3.1.7'
 gem 'bcrypt-ruby', '~>3.0.0'
+gem 'byebug'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
