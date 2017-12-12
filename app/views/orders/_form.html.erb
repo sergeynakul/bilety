@@ -11,27 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label 'Имя' %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label 'Email' %><br>
-    <%= f.email_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label 'Станция отправления' %><br>
-    <%= f.text_field :from %>
-  </div>
-  <div class="field">
-    <%= f.label 'Станция назначения' %><br>
-    <%= f.text_field :to %>
-  </div>
-  <div class="field">
-    <%= f.label 'Дата' %><br>
-    <%= f.date_field :date %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Отправить' %>
-  </div>
+  <% if logged_in? %>
+      <div class="field">
+        <%= f.label 'Станция отправления' %><br>
+        <%= f.text_field :from %>
+      </div>
+      <div class="field">
+        <%= f.label 'Станция назначения' %><br>
+        <%= f.text_field :to %>
+      </div>
+      <div class="field">
+        <%= f.label 'Дата' %><br>
+        <%= f.date_field :date %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Отправить' %>
+      </div>
+  <% else %>
+      <div class="field">
+        <%= f.label 'Имя и фамилия' %><br>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label 'Email' %><br>
+        <%= f.email_field :email %>
+      </div>
+      <div class="field">
+        <%= f.label 'Станция отправления' %><br>
+        <%= f.text_field :from %>
+      </div>
+      <div class="field">
+        <%= f.label 'Станция назначения' %><br>
+        <%= f.text_field :to %>
+      </div>
+      <div class="field">
+        <%= f.label 'Дата' %><br>
+        <%= f.date_field :date %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Отправить' %>
+      </div>
+  <% end %>
 <% end %>
