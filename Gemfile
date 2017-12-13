@@ -7,6 +7,10 @@ gem 'sqlite3'
 gem 'bcrypt',      '3.1.7'
 gem 'bcrypt-ruby', '~>3.0.0'
 gem 'byebug'
+gem 'faker'
+
+gem 'bootstrap-sass'
+gem 'sprockets'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

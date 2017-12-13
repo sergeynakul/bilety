@@ -1,0 +1,31 @@
+<% provide(:title, "Редактирование профиля") %>
+
+<header>
+<h1>Редактирование профиля</h1>
+</header>
+
+<section>
+  <%= form_for(@user) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+    <%= f.label "Имя и фамилия" %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label "Email" %><br>
+    <%= f.email_field :email %><br>
+    <%= f.label "Пароль" %><br>
+    <%= f.password_field :password %><br>
+    <%= f.label "Подтверждение пароля" %><br>
+    <%= f.password_field :password_confirmation %><br>
+    <%= f.submit "Сохранить изменения" %><br>
+  <% end %>
+
+  <div>
+  <%= gravatar_for @user %>
+  <a href="http://gravatar.com/emails" target="_blank">изменить картинку</a>
+  </div>
+</section>
+
+<footer>
+<p>По всем вопросам обращаться на sergey12vn@gmail.com или по телефону +38 (000) 000-00-00</p>
+</footer>
+

@@ -1,3 +1,5 @@
 <% provide(:title, @user.name) %>
 <%= gravatar_for @user %>
 <h1><%= @user.name %>, <%= @user.email %></h1>
+<h2>Сделать <%= link_to "запрос", root_path %></h2>
+<%= link_to "Редактировать профиль", edit_user_path(current_user) %>

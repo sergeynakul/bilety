@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_order,      only: [:show, :edit, :update, :destroy]
+  before_action :admin_user,     only: :index
   # GET /orders
   # GET /orders.json
   def index
@@ -75,5 +75,8 @@ class OrdersController < ApplicationController
     def order_params
       params.require(:order).permit(:name, :email, :from, :to, :date)
     end
-
+    
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
+    end
 end
