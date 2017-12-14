@@ -1,6 +1,6 @@
 <% provide(:title, "Все запросы") %>
-<h1>Список запросов</h1>
-
+<h1>Список <%= link_to "всех", orders_path %> запросов</h1>
+<h2>Показать <%= link_to "невыполненные", not_do_orders_path(@order) %> запросы</h2>
 <table>
   <thead>
     <tr>
@@ -10,6 +10,7 @@
       <th>Куда</th>
       <th>Дата отправления</th>
       <th>Дата запроса</th>
+      <th>Выполнен?</th>
     </tr>
   </thead>
 
@@ -22,6 +23,7 @@
         <td><%= order.to %></td>
         <td><%= order.date %></td> 
         <td><%= order.created_at %></td> 
+        <td><%= order.status %> | <%= link_to "+", status_order_path(order) %></td> 
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

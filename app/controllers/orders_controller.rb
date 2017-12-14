@@ -1,11 +1,21 @@
 class OrdersController < ApplicationController
-  before_action :set_order,      only: [:show, :edit, :update, :destroy]
-  before_action :admin_user,     only: :index
+  before_action :set_order,      only: [:show, :edit, :update, :destroy, :status]
+  before_action :admin_user,     only: [:index, :not_do]
   before_action :logged_in_user, only: [:new, :edit, :create, :update, :destroy]
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
+  end
+
+  def status
+    @order.update_attribute(:status, true)
+    redirect_to orders_path
+  end
+
+  def not_do
+    @orders = Order.where(status: false)
+    render "index"
   end
 
   # GET /orders/1

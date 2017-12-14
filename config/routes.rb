@@ -2,7 +2,10 @@ Bilety::Application.routes.draw do
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :orders
+  resources :orders do
+    get :status, on: :member
+    get :not_do, on: :collection
+  end
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.

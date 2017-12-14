@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214080613) do
+ActiveRecord::Schema.define(version: 20171214144514) do
 
   create_table "orders", force: true do |t|
     t.string   "from"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171214080613) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "email"
+    t.boolean  "status",     default: false
   end
 
   add_index "orders", ["created_at"], name: "index_orders_on_created_at"
