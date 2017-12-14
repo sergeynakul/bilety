@@ -8,18 +8,20 @@
       <th>Email</th>
       <th>От куда</th>
       <th>Куда</th>
-      <th>Дата</th>
+      <th>Дата отправления</th>
+      <th>Дата запроса</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.name %></td>
-        <td><%= order.email %></td>
+        <td><%= order.user.name %></td>
+        <td><%= order.user.email %></td>
         <td><%= order.from %></td>
         <td><%= order.to %></td>
-        <td><%= order.date %></td>     
+        <td><%= order.date %></td> 
+        <td><%= order.created_at %></td> 
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>

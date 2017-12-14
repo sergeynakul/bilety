@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order,      only: [:show, :edit, :update, :destroy]
   before_action :admin_user,     only: :index
+  before_action :logged_in_user, only: [:new, :edit, :create, :update, :destroy]
   # GET /orders
   # GET /orders.json
   def index
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
 
     respond_to do |format|
       if @order.save
@@ -41,7 +42,7 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
 
     respond_to do |format|
       if @order.save
@@ -73,7 +74,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :email, :from, :to, :date)
+      params.require(:order).permit(:from, :to, :date)
     end
     
     def admin_user

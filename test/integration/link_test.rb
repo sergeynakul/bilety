@@ -1,11 +1,14 @@
 require 'test_helper'
 
 class LinkTest < ActionDispatch::IntegrationTest
+
+  setup do
+    @user = users(:michael)
+  end
   
   test "links" do
+  	log_in_as(@user)
   	get root_path
   	assert_template 'orders/new'
-  	assert_select "a[href=?]", signup_path
-  	# assert_select "a[href=?]", login_path
   end
 end

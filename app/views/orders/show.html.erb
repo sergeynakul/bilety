@@ -1,13 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-Спасибо за Ваш запрос, <%= @order.name %>!<br>
+Спасибо за Ваш запрос, <%= current_user.name %>!<br>
 
 А именно,<br>
 Станция отправления - <%= @order.from %><br>
 Станция назначения - <%= @order.to %><br>
 Дата - <%= @order.date %><br>
 
-Вам на email - <%= @order.email %> - прийдет стоимость билета.<br>
+Вам на email - <%= current_user.email %> - прийдет стоимость билета.<br>
 
 Если Вам нужно изменить какие-то данные, нажмите - 
-<%= link_to 'Редактировать запрос', edit_order_path(@order) %>
+<%= link_to 'Редактировать запрос', edit_order_path(@order) %><br>
+<%= link_to 'На главную', root_path %><br>
+<%= link_to "Выход", logout_path, method: "delete" %><br>

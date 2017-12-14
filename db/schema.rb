@@ -11,17 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213160928) do
+ActiveRecord::Schema.define(version: 20171214080613) do
 
   create_table "orders", force: true do |t|
-    t.string   "name"
-    t.string   "email"
     t.string   "from"
     t.string   "to"
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
   end
+
+  add_index "orders", ["created_at"], name: "index_orders_on_created_at"
+  add_index "orders", ["date"], name: "index_orders_on_date"
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

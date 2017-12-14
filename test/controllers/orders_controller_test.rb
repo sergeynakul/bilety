@@ -3,10 +3,12 @@ require 'test_helper'
 class OrdersControllerTest < ActionController::TestCase
   setup do
     @order = orders(:one)
+    @admin = users(:michael)
     @base_title = "ЖД билеты на украинские поезда"
   end
 
   test "should get index" do
+    log_in_as(@admin)
     get :index
     assert_response :success
     assert_not_nil assigns(:orders)
