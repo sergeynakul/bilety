@@ -34,8 +34,8 @@ Bilety::Application.configure do
     port:           587,
     domain:         "localhost",
     authentication: "plain",
-    user_name:      "sergey12vn@gmail.com",
-    password:       "89Fe16ch",
+    user_name:      "ror.test.e@gmail.com",
+    password:       "ror123456789",
     enable_starttls_auto: true
   }
 end
